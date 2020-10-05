@@ -1,0 +1,32 @@
+<!-- Nagłówek -->
+<app-navbar [title]="appTitle()"></app-navbar>
+<!-- koniec nagłówka -->
+
+<div class="container q-container">
+  <!--Dodawanie cytatu-->
+  <app-button
+    customClasses="btn-floating teal add-button"
+    (clickButton)="form.onSwitchForm()"
+  >
+    <i class="material-icons">add</i>
+  </app-button>
+  <app-form #form (newQuotation)="onNewQuotation($event)">
+
+  </app-form>
+  <!-- Koniec dodawanie cytatu -->
+
+  <div class="row">
+    <!-- Lista cytatów -->
+    <div class="col s8">
+      <app-list [quotes]="quotes" (vote)="addVote($event)"> </app-list>
+    </div>
+    <!-- Koniec lista cytatów -->
+
+    <!-- Sekcja rankigów -->
+    <div class="col s4">
+      <app-ranking [quotes]="bestQuotes()" [title]="rankingTitle()"></app-ranking>
+      <app-ranking [quotes]="worstQuotes()" [title]="rankingTitle()"></app-ranking>
+    </div>
+    <!-- Sekcja rankigów -->
+  </div>
+</div>
